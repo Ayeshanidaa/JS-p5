@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle Scramble Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lobster&family=Satisfy&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Embed the video here -->
+    <video autoplay muted loop id="background-video">
+        <source src="bg-vdeo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="start-screen" class="screen">
+        <h1>Welcome to the Riddle Scramble Game!</h1>
+        <p>Unscramble the word based on the riddle provided.</p>
+
+        <button id="start-btn">Start Game</button>
+    </div>
+
+    <div id="game-screen" class="screen" style="display: none;">
+        <h2>Riddle:</h2>
+        <p id="riddle"></p>
+        <h3>Unscrambled Word:</h3>
+        <p id="scrambled-word"></p>
+        <input type="text" id="user-input" placeholder="Type your guess">
+        <button id="submit-btn">Submit</button>
+        <p id="message"></p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <div id="end-screen" class="screen" style="display: none;">
+        <h2>Game Over!</h2>
+        <p id="final-message"></p>
+        <button id="restart-game-btn">Restart Game</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
