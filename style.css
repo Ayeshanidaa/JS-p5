@@ -115,3 +115,67 @@ input[type="text"] {
     font-size: 1.2em;
     color: #555;
 }
+
+
+@media (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
+
+    .screen {
+        width: 95%;
+        max-width: none;
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    #start-screen h1 {
+        font-size: 1.5em;
+    }
+
+    #game-screen h2, #end-screen h2 {
+        font-size: 1.5em;
+    }
+
+    #game-screen p, #end-screen p {
+        font-size: 1em;
+    }
+
+    input[type="text"] {
+        width: 90%;
+        padding: 8px;
+    }
+}
+
+/* Styles for Extra Small Screens */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .screen {
+        width: 100%;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.8em;
+    }
+
+    #start-screen h1 {
+        font-size: 1.3em;
+    }
+
+    #game-screen h2, #end-screen h2 {
+        font-size: 1.3em;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+}
