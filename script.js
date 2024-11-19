@@ -35,6 +35,11 @@ function startGame() {
     document.getElementById('game-screen').style.display = 'block';
     nextRiddle(); // Load the first riddle
 }
+function goToStartScreen() {
+    document.getElementById('game-screen').style.display = 'none';
+    document.getElementById('start-screen').style.display = 'block';
+}
+
 
 // Function to load the next riddle
 function nextRiddle() {
