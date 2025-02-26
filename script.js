@@ -20,8 +20,11 @@ let askedRiddles = []; // Track asked riddles
 let previousRiddles = []; // Store previously asked riddles
 
 function scrambleWord(word) {
-    return word.split('').sort(() => Math.random() - 0.5).join('');
+    const scrambled = word.split('').sort(() => Math.random() - 0.5).join('');
+    // console.log(`Original Word: ${word} | Scrambled Word: ${scrambled}`);
+    // return scrambled;
 }
+
 
 function startGame() {
     score = 0;
@@ -75,10 +78,12 @@ function checkGuess() {
         document.getElementById('score').textContent = score;
         messageElement.textContent = "Correct! Well done!";
         console.log(`User answered correctly: ${userInput}`);
+        alert("Correct! Well done! 🎉");
         nextRiddle();
     } else {
         messageElement.textContent = "Oops! Try again!";
         console.log(`User answered incorrectly: ${userInput} (Correct Answer: ${selectedRiddle.answer})`);
+        alert(`Wrong answer! The correct answer was: ${selectedRiddle.answer}`);
     }
 }
 
@@ -97,6 +102,8 @@ document.getElementById('start-btn').addEventListener('click', startGame);
 document.getElementById('submit-btn').addEventListener('click', checkGuess);
 document.getElementById('restart-game-btn').addEventListener('click', restartGame);
 
-window.onload = () => {
-    document.getElementById('restart-btn').style.display = 'none';
-};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const restartBtn = document.getElementById("restart-btn");
+    if (restartBtn) restartBtn.style.display = "none";
+});
