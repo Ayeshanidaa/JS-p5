@@ -42,10 +42,13 @@ function nextRiddle() {
         let randomIndex;
         do {
             randomIndex = Math.floor(Math.random() * riddles.length);
+            alert(randomIndex)
         } while (askedRiddles.includes(randomIndex));
 
         askedRiddles.push(randomIndex);
+        console.log(askedRiddles);
         selectedRiddle = riddles[randomIndex];
+        riddles[3];
         scrambledAnswer = scrambleWord(selectedRiddle.answer);
 
         console.log("Selected Riddle:", selectedRiddle);
