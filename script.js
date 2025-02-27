@@ -17,6 +17,8 @@ let score = 0;
 let questionCount = 0;
 const totalQuestions = 10;
 let askedRiddles = [];
+//store question count on console
+console.log(questionCount);
 
 function scrambleWord(word) {
     return word.split('').sort(() => Math.random() - 0.5).join('');
