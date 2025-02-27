@@ -16,21 +16,16 @@ let scrambledAnswer;
 let score = 0;
 let questionCount = 0;
 const totalQuestions = 10;
-let askedRiddles = []; // Track asked riddles
-let previousRiddles = []; // Store previously asked riddles
+let askedRiddles = [];
 
 function scrambleWord(word) {
-    const scrambled = word.split('').sort(() => Math.random() - 0.5).join('');
-    // console.log(`Original Word: ${word} | Scrambled Word: ${scrambled}`);
-    // return scrambled;
+    return word.split('').sort(() => Math.random() - 0.5).join('');
 }
-
 
 function startGame() {
     score = 0;
     questionCount = 0;
     askedRiddles = [];
-    previousRiddles = [];
     document.getElementById('score').textContent = score;
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
@@ -49,10 +44,6 @@ function nextRiddle() {
             randomIndex = Math.floor(Math.random() * riddles.length);
         } while (askedRiddles.includes(randomIndex));
 
-        if (selectedRiddle) {
-            previousRiddles.push(selectedRiddle.question);
-        }
-
         askedRiddles.push(randomIndex);
         selectedRiddle = riddles[randomIndex];
         scrambledAnswer = scrambleWord(selectedRiddle.answer);
@@ -62,8 +53,6 @@ function nextRiddle() {
         document.getElementById('user-input').value = '';
         document.getElementById('message').textContent = '';
         questionCount++;
-        
-        console.log("Previous Riddles:", previousRiddles);
     } else {
         endGame();
     }
@@ -77,13 +66,9 @@ function checkGuess() {
         score++;
         document.getElementById('score').textContent = score;
         messageElement.textContent = "Correct! Well done!";
-        console.log(`User answered correctly: ${userInput}`);
-        alert("Correct! Well done! 🎉");
-        nextRiddle();
+        nextRiddle(); 
     } else {
         messageElement.textContent = "Oops! Try again!";
-        console.log(`User answered incorrectly: ${userInput} (Correct Answer: ${selectedRiddle.answer})`);
-        alert(`Wrong answer! The correct answer was: ${selectedRiddle.answer}`);
     }
 }
 
@@ -102,8 +87,6 @@ document.getElementById('start-btn').addEventListener('click', startGame);
 document.getElementById('submit-btn').addEventListener('click', checkGuess);
 document.getElementById('restart-game-btn').addEventListener('click', restartGame);
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const restartBtn = document.getElementById("restart-btn");
-    if (restartBtn) restartBtn.style.display = "none";
-});
+window.onload = () => {
+    document.getElementById('restart-btn').style.display = 'none'; 
+};
