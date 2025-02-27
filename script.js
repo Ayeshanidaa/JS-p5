@@ -47,30 +47,40 @@ function nextRiddle() {
         askedRiddles.push(randomIndex);
         selectedRiddle = riddles[randomIndex];
         scrambledAnswer = scrambleWord(selectedRiddle.answer);
-        
+
+        console.log("Selected Riddle:", selectedRiddle);
+        console.log("Scrambled Answer:", scrambledAnswer);
+        console.log("Question Count:", questionCount);
+
         document.getElementById('riddle').textContent = selectedRiddle.question;
         document.getElementById('scrambled-word').textContent = scrambledAnswer;
         document.getElementById('user-input').value = '';
         document.getElementById('message').textContent = '';
         questionCount++;
     } else {
+        alert(`Game Over! Total Questions Asked: ${questionCount}`);
         endGame();
     }
 }
+
 
 function checkGuess() {
     const userInput = document.getElementById('user-input').value;
     const messageElement = document.getElementById('message');
 
+    console.log("User Input:", userInput); // Console me user ka answer print hoga
+
     if (userInput.toLowerCase() === selectedRiddle.answer) {
         score++;
         document.getElementById('score').textContent = score;
         messageElement.textContent = "Correct! Well done!";
+        console.log("Updated Score:", score); // Score update hone ke baad console me dikhayega
         nextRiddle(); 
     } else {
         messageElement.textContent = "Oops! Try again!";
     }
 }
+
 
 function endGame() {
     document.getElementById('game-screen').style.display = 'none';
@@ -87,6 +97,4 @@ document.getElementById('start-btn').addEventListener('click', startGame);
 document.getElementById('submit-btn').addEventListener('click', checkGuess);
 document.getElementById('restart-game-btn').addEventListener('click', restartGame);
 
-window.onload = () => {
-    document.getElementById('restart-btn').style.display = 'none'; 
-};
+
